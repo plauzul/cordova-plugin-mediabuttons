@@ -1,0 +1,20 @@
+{
+  "name": "cordova-plugin-mediabuttons",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-mediabuttons",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "action-media-button",
+    "handler-button-headset"
+  ],
+  "author": "Paulo Henrique",
+  "license": "ISC"
+}
