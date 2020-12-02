@@ -24,6 +24,7 @@ public class MediaButtons extends CordovaPlugin {
 
     MediaSession ms;
     AudioTrack at;
+    boolean startedActionMediaButtons;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -52,9 +53,14 @@ public class MediaButtons extends CordovaPlugin {
             @Override
             public boolean onMediaButtonEvent(Intent mediaButtonIntent) {
                 KeyEvent keyEvent = (KeyEvent) mediaButtonIntent.getExtras().get(Intent.EXTRA_KEY_EVENT);
+                if (startedActionMediaButtons) {
+                    startedActionMediaButtons = false;
+                    return super.onMediaButtonEvent(mediaButtonIntent);
+                }
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        startedActionMediaButtons = true;
                         webView.loadUrl("javascript:cordova.fireDocumentEvent('actionbutton');");
                     }
                 });
