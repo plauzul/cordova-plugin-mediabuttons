@@ -69,7 +69,7 @@ public class MediaButtons extends CordovaPlugin {
         });
 
         Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
-        PendingIntent mediaButtonReceiverPendingIntent = PendingIntent.getBroadcast(this.webView.getContext(), 0, mediaButtonIntent, 0);
+        PendingIntent mediaButtonReceiverPendingIntent = PendingIntent.getBroadcast(this.webView.getContext(), 0, mediaButtonIntent, PendingIntent.FLAG_IMMUTABLE);
 
         ms.setMediaButtonReceiver(mediaButtonReceiverPendingIntent);
         at.play();
